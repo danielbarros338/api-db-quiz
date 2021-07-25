@@ -3,25 +3,25 @@ const jwt = require('jsonwebtoken');
 
 exports.createUser = (req, res) => {
     User.create({
-       first_name: req.body.first_name,
-       surname: req.body.surname,
-       nickname: req.body.nickname,
-       pass: req.body.pass,
-       email: req.body.email,
-       street: req.body.street,
-       st_number: req.body.st_number,
-       district: req.body.district,
-       state: req.body.state,
-       city: req.body.city,
-       phone: req.body.phone,
-       question1: req.body.question1,
-       question2: req.body.question2
-    })
-    .then( value => {
-        const token = _createToken(value);
-        return res.json(token);
-    })
-    .catch(value => res.sendStatus(400));
+        first_name: req.body.first_name,
+        surname: req.body.surname,
+        nickname: req.body.nickname,
+        pass: req.body.pass,
+        email: req.body.email,
+        street: req.body.street,
+        st_number: req.body.st_number,
+        district: req.body.district,
+        state: req.body.state,
+        city: req.body.city,
+        phone: req.body.phone,
+        question1: req.body.question1,
+        question2: req.body.question2
+     })
+     .then( value => {
+         const token = _createToken(value);
+         return res.json(token);
+     })
+     .catch(value => res.json({user: "exist"}));
 }
 
 exports.getUser = (req, res) => {
